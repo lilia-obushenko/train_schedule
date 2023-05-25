@@ -1,5 +1,6 @@
 <h1>Train Schedule</h1>
-[DEMO](https://lilia-obushenko.github.io/train_schedule/)
+
+- [DEMO](https://lilia-obushenko.github.io/train_schedule/)
 
 <p>This is a web application called "Train Schedule" that provides information about train schedules. The application allows users to view a list of trains from Lviv and display detailed information about each train, such as departure time, arrival time, and destination.</p>
 
@@ -17,11 +18,12 @@
 
 To get started with the "Train Schedule" application, follow these steps:
 
-Clone the repository: git clone https://github.com/lilia-obushenko/train_schedule.git
-Navigate to the directory to start demo: cd client
-Install dependencies: npm install
-Start the development server: npm start
-Open the application in your browser: http://localhost:3000
+<ul>
+  <li>Clone the repository</li>
+  <li>Navigate to the directory: cd client</li>
+  <li>Install dependencies: npm install</li>
+  <li>Start the development server: npm start</li>
+</ul>
 
 <h2>Technologies Used</h2>
 
@@ -34,6 +36,7 @@ Open the application in your browser: http://localhost:3000
 - CSS3: Styling language for defining the appearance of the web page
 
 <h3>Backend Part</h3>
+
 - Node.js
 - Express.js
 - Sequelize ORM
