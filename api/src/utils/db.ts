@@ -8,11 +8,11 @@ if (!process.env.URI) {
 }
 
 export const sequelize = new Sequelize(process.env.URI, {
-  dialect: 'postgres',
-  ssl: true,
+  dialect: 'mysql',
   dialectOptions: {
     ssl: {
       require: true,
+      rejectUnauthorized: false,
     },
   },
 });
