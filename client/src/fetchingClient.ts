@@ -1,6 +1,6 @@
 import { Train } from "./typedefs";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://trains-2y0n.onrender.com";
 
 function request<T>(url: string): Promise<T> {
   const fullUrl = BASE_URL + url;
