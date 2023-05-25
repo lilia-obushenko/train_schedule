@@ -39,6 +39,7 @@ To get started with the "Train Schedule" application, follow these steps:
 
 - Node.js
 - Express.js
+- MySQL
 - Sequelize ORM
-- Neon.tech
+- Railway.app
 - Render.com
