@@ -22,22 +22,16 @@
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/node": "^20.1.2",
-    "@typescript-eslint/eslint-plugin": "^5.59.6",
-    "@typescript-eslint/parser": "^5.59.6",
-    "eslint": "^8.40.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.2",
-    "prettier": "2.8.8",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
+    "eslint": "^8.41.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },
   "scripts": {
     "start": "nodemon src/app.ts",
     "build": "tsc",
-    "lint": "eslint . --ignore-path .gitignore",
-    "format": "prettier --write . --ignore-path .gitignore",
-    "fix-style": "npm run format && npm run lint -- --fix",
-    "prepare": "husky install"
+    "lint": "eslint . --ignore-path .gitignore"
   },
   "repository": {
     "type": "git",
@@ -48,8 +42,5 @@
   "bugs": {
     "url": "https://github.com/lilia-obushenko/train_schedule/issues"
   },
-  "homepage": "https://github.com/lilia-obushenko/train_schedule",
-  "lint-staged": {
-    "*.ts": "npm run lint"
-  }
+  "homepage": "https://github.com/lilia-obushenko/train_schedule"
 }
