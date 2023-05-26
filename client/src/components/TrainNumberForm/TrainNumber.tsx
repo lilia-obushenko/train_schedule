@@ -1,7 +1,7 @@
-import { FC, FormEvent, useState } from 'react'
+import { FC } from 'react'
 import { Button, Form } from 'react-bootstrap';
-import client from '../../fetchingClient';
 import { Train } from '../../typedefs';
+import { useTrainNumber } from './useTrainNumber';
 
 interface Props {
   onLoading: (value: boolean) => void,
@@ -11,34 +11,10 @@ interface Props {
 
 export const TrainNumber: FC<Props> = (props) => {
   const {
-    onError,
-    onGetTrains,
-    onLoading,
-  } = props;
-
-  const [trainNumber, setTrainNumber] = useState(0);
-
-  const handleSubmitNumber = async (e: FormEvent) => {
-    e.preventDefault();
-    onLoading(true);
-    onError(false);
-
-    try {
-      const trainFromServer = await client.getByNumber(trainNumber);
-
-      if (!trainFromServer) {
-        onError(true);
-      }
-
-      const train = [trainFromServer];
-
-      onGetTrains(train);
-    } catch {
-      onError(true);
-    } finally {
-      onLoading(false);
-    }
-  };
+    trainNumber,
+    handleChange,
+    handleSubmitNumber,
+  } = useTrainNumber(props);
 
   return (
     <Form 
@@ -48,10 +24,7 @@ export const TrainNumber: FC<Props> = (props) => {
       <Form.Control
         value={trainNumber}
         type="text"
-        id="inputFrom"
-        placeholder="Train number"
-        aria-describedby="trainNumberHelp"
-        onChange={(e) => setTrainNumber(Number(e.target.value))}
+        onChange={handleChange}
       />
 
       <Button variant="danger" type="submit">

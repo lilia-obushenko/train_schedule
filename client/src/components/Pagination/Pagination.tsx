@@ -1,6 +1,8 @@
 import { Pagination } from "react-bootstrap";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
+import './Paginator.css';
 import { Train } from "../../typedefs";
+import { usePagination } from "./usePagination";
 
 interface Props {
   trains: Train[],
@@ -10,25 +12,16 @@ interface Props {
 
 export const Paginator: FC<Props> = (props) => {
   const { trains, onItemsChange, loading } = props;
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const {
+    totalPages,
+    currentPage,
+    handlePageChange,
+  } = usePagination({ trains, onItemsChange });
   
 
-  useEffect(() => {
-    onItemsChange(trains.slice(indexOfFirstItem, indexOfLastItem));
-  }, [indexOfFirstItem, indexOfLastItem, onItemsChange, trains])
-
-  const handlePageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const totalPages = Math.ceil(trains.length / itemsPerPage);
-
   return (
-    <>
+    <div className="paginator">
       {totalPages > 1 && !loading && (
         <Pagination>
           <Pagination.Prev
@@ -52,6 +45,6 @@ export const Paginator: FC<Props> = (props) => {
           />
         </Pagination>
       )}
-    </>
+    </div>
   );
 };

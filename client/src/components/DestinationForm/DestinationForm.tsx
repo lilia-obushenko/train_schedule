@@ -1,7 +1,7 @@
-import { FC, FormEvent, useState } from "react";
+import { FC } from "react";
 import { Button, Form } from "react-bootstrap";
-import client from '../../fetchingClient';
 import { Train } from "../../typedefs";
+import { useForm } from "./useForm";
 
 interface Props {
   onLoading: (value: boolean) => void,
@@ -10,41 +10,19 @@ interface Props {
 }
 
 export const DestinationForm: FC<Props> = (props) => {
-  const { 
-    onGetTrains, 
-    onLoading, 
-    onError, 
-  } = props;
+  const {
+    from,
+    setFrom,
+    handleAll,
+    destination,
+    handleSubmit,
+    setDestination,
+  } = useForm(props);
 
-  const [from, setFrom] = useState('');
-  const [destination, setDestination] = useState('');
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    onLoading(true);
-    onError(false);
-
-    try {
-      const trainsFromServer = await client.getTrains(from, destination);
-
-      if (!trainsFromServer.length) {
-        onError(true);
-      }
-
-      onGetTrains(trainsFromServer);
-    } catch {
-      onError(true);
-    } finally {
-      onLoading(false);
-    }
-
-    setFrom('');
-    setDestination('');
-  };
-  
   return (
     <Form className="forms" onSubmit={handleSubmit}>
       <Form.Control
+        className="forms__field"
         value={from}
         type="text"
         id="inputFrom"
@@ -62,8 +40,19 @@ export const DestinationForm: FC<Props> = (props) => {
         onChange={(e) => setDestination(e.target.value)}
       />
 
-      <Button variant="danger" type="submit">
+      <Button 
+        variant="danger" 
+        type="submit"
+      >
         Search
+      </Button>
+
+      <Button 
+        variant="danger" 
+        type="submit"
+        onClick={handleAll}
+      >
+        All
       </Button>
     </Form>
   )

@@ -11,8 +11,6 @@
 <p>Search: Users can search for specific trains by entering a train number or destination in the search bar.</p>
   
 <p>Pagination: The train list is paginated, allowing users to navigate through multiple pages of train information.</p>
-  
-<p>Sorting: Users can sort the train list by different criteria, such as departure time or train number, in ascending or descending order.</p>
 
 <h2>Getting Started</h2>
 

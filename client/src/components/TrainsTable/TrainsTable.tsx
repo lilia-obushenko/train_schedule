@@ -1,4 +1,5 @@
 import { FC } from "react";
+import './TrainsTable.css';
 import { Train } from "../../typedefs";
 import { Table } from "react-bootstrap";
 import Spinner from 'react-bootstrap/Spinner';
@@ -22,31 +23,40 @@ export const TrainsTable: FC<Props> = (props) => {
         
       {isTableVisible && (
         <>
-          <h2>Trains in the coming week</h2>
+          <h2 className="list__title">
+            Trains in the coming week
+          </h2>
         
-          <Table striped bordered hover className="table">
-            <thead>
-              <tr>
-                <th>Train №</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Dispatch</th>
-                <th>Time</th>
-                <th>Arrival</th>
-                <th>Time</th>
-                <th>Price</th>
-              </tr>
-            </thead>
+          <div className="table__container"> 
+            <Table 
+              striped 
+              bordered 
+              hover 
+              className="table"
+            >
+              <thead>
+                <tr>
+                  <th>Train №</th>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Dispatch</th>
+                  <th>Time</th>
+                  <th>Arrival</th>
+                  <th>Time</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
 
-            <tbody>
-              {trains.map((train) => (
-                <TrainInfo 
-                key={train.number} 
-                train={train} 
-              />
-              ))}
-            </tbody>
-          </Table>
+              <tbody>
+                {trains.map((train) => (
+                  <TrainInfo 
+                  key={train.number} 
+                  train={train} 
+                />
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </>
       )}
 
